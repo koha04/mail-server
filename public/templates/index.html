@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mail Server - Home Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/styles/output.css" />
+  </head>
+  <body>
+    <button
+      type="button"
+      class="addNewLetterBtn bg-gray-400/80 size-12 fixed bottom-5 right-10 inline-flex items-center justify-center rounded-full text-white text-xl"
+      onclick="openEditor()"
+    >
+      <i class="fa-solid fa-plus"></i>
+    </button>
+    <form
+      method="post"
+      class="opacity-0 invisible editor w-2/5 h-[450px] rounded-md fixed right-10 bottom-0 shadow shadow-slate-500 *:px-3 bg-white [&.open]:opacity-100 [&.open]:visible"
+      onsubmit="submitForm(event)"
+    >
+      <div class="flex justify-between items-center py-1 bg-neutral-300">
+        <span class="text-sm">New Letter</span>
+        <button class="cancelBtn" onclick="closeEditor()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="divide-y *:text-sm">
+        <div class="space-x-1.5 py-1.5 flex">
+          <span>To</span>
+          <input
+            type="email"
+            name="to"
+            class="border-none outline-none w-full"
+          />
+        </div>
+        <div class="space-x-1.5 py-1.5 flex">
+          <input
+            type="text"
+            name="subject"
+            class="border-none outline-none w-full"
+            placeholder="Subject"
+          />
+        </div>
+        <div id="content" class="w-full h-60">
+          <textarea
+            name="content"
+            class="outline-none py-1 px-3 resize-none"
+          ></textarea>
+        </div>
+      </div>
+
+      <div
+        class="container absolute bottom-16 left-0 mx-3 w-[calc(100%-24px)] min-h-10 max-h-28 flex flex-col overflow-auto gap-3"
+      ></div>
+
+      <div class="flex items-center gap-3 h-16">
+        <button
+          type="submit"
+          class="bg-sky-500 text-white text-[15px] rounded-full py-1.5 px-4 font-medium hover:shadow hover:shadow-sky-600"
+        >
+          Send
+        </button>
+        <input
+          type="file"
+          name="file"
+          class="file file:text-sm file:bg-purple-300 file:border-none file:outline-none file:p-1.5 file:px-3 file:rounded-md file:cursor-pointer"
+          multiple
+          onchange="chooseFiles(event)"
+        />
+      </div>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script
+      src="https://kit.fontawesome.com/5530efa4b8.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../static/js/index.js"></script>
+  </body>
+</html>
